@@ -92,6 +92,8 @@ ul {
 .header__profile a {
     color: #ffffffde;
     font-weight: 200;
+    font-family: 'Poppins';
+    font-size: 14px;
 }
 
 .header__profile a:hover {
@@ -117,12 +119,84 @@ ul {
 
 .nav {
     grid-area: nav;
-    background: #ed6663;
+    background: #fff;
+    overflow: hidden;
+}
+
+.nav__items {
+    padding: 25px 45px;
+    min-width: 800px;
+    color: #282828;
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+}
+
+.nav__items:hover {
+    background: #000;
+    color: #fff;
+}
+
+.nav__items.active {
+    background: #000;
+    color: #fff;
+}
+
+.nav__items .fas {
+    margin-right: 32px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.nav__favorite {
+    padding: 10px 10px 0px 25px;
+}
+
+.nav__favorite h3 {
+    margin-bottom: 15px;
+}
+
+.nav__favorite--scroll {
+    overflow: auto;
+    height: 220px;
+    scrollbar-color: #7f7f7f white; /* thumb and track color */
+    scrollbar-width: thin;
+}
+
+.nav__favorite a {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    margin-right: 10px;
+}
+
+.nav__favorite figure {
+    width: 46px;
+    height: 46px;
+    overflow: hidden;
+    border-radius: 100px;
+    margin-right: 20px;
+}
+
+.nav__favorite img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav__favorite a div {
+    font-size: 14px;
+    color: rgb(151, 151, 151);
+}   
+
+.nav__favorite h4 {
+    font-size: 16px;
+    color: #000;
 }
 
 /* <-------- MAIN --------> */
 
 .main {
     grid-area: main;
-    background: #ffa372;
+    background: rgb(236, 236, 236);
 }
