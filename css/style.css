@@ -1,0 +1,51 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins'
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.page {
+    display: grid;
+    width: 100%;
+    min-height: 100vh;
+    grid-template-columns: 260px auto;
+    grid-template-rows: 60px auto;
+    grid-template-areas: "nav header"
+                        "nav main";
+}
+
+.header {
+    grid-area: header;
+    background: #0f4c81;
+}
+
+.nav {
+    grid-area: nav;
+    background: #ed6663;
+}
+
+.main {
+    grid-area: main;
+    background: #ffa372;
+}
