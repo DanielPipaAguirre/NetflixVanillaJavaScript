@@ -30,7 +30,7 @@ ul {
     width: 100%;
     min-height: 100vh;
     grid-template-columns: 260px auto;
-    grid-template-rows: 60px 400px auto;
+    grid-template-rows: 60px calc(100vh - 60px) 0;
     grid-template-areas: "header header"
                         "nav main"
                         "nav alert";
@@ -53,10 +53,11 @@ ul {
     grid-area: logo;
     display: flex;
     align-items: center;
+    padding: 0 12px;
 }
 
 .header__logo a {
-    width: 80px;
+    width: 36px;
     position: relative;
     top: 2px;
 }
@@ -125,7 +126,7 @@ ul {
 }
 
 .nav__items {
-    padding: 25px 45px;
+    padding: 25px 36px;
     min-width: 800px;
     color: #282828;
     display: flex;
@@ -144,7 +145,7 @@ ul {
 }
 
 .nav__items .fas {
-    margin-right: 32px;
+    margin-right: 36px;
     text-align: center;
     font-size: 22px;
 }
@@ -200,12 +201,14 @@ ul {
 .main {
     grid-area: main;
     background: rgb(249, 249, 249);
-    padding: 0px 40px 20px;
     overflow: auto;
+    scrollbar-color: #7f7f7f white; /* thumb and track color */
+    scrollbar-width: thin;
 }
 
 .main h3 {
     margin: 15px 0;
+    margin-left: 15px;
 }
 
 .main__section {
@@ -213,12 +216,16 @@ ul {
     align-items: center;
 }
 
+.main__section .sk-fading-circle {
+    margin-left: 15px;
+}
+
 .main__section figure {
     width: 160px;
     height: 240px;
     border-radius: 10px;
     overflow: hidden;
-    margin: 10px 0;
+    margin: 10px 15px;
 }
 
 .main__section img {
@@ -231,29 +238,9 @@ ul {
 
 .alert {
     grid-area: alert;
-    background: black;
-    padding: 25px 60px;
-    display: flex;
-    align-items: center;
+    display: grid;
 }
 
-.alert__miniature figure {
-    width: 90px;
-    height: 120px;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.alert__miniature img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.alert__description {
-    color:white;
-    margin-left: 40px;
-}
 
 /* <-------- ANIMATION LOADING --------> */
 
