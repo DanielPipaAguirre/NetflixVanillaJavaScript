@@ -32,7 +32,7 @@
             feature.innerHTML = templateHTML;
         } catch (error) {
             page.classList.remove("active");
-            alert(error.message)
+            alert("No se encontró la película")
         }
         form.reset();
     })
