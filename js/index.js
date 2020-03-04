@@ -2,7 +2,9 @@
     async function getData(url) {
         const response = await fetch(url);
         const data = await response.json();
-        return data
+        if (data.data.movie_count > 0) {
+            return data
+        }
     }
     const BASE_API = 'https://yts.mx/api/v2/';
     function createTemplate(film) {
@@ -20,13 +22,19 @@
         e.preventDefault();
         page.classList.add("active");
         const data = new FormData(form);
-        const {
-            data: {
-                movies: pelis
-            }
-        } = await getData(`${BASE_API}list_movies.json?limit=1&query_term=${data.get('name')}`)
-        const templateHTML = createTemplate(pelis[0]);
-        feature.innerHTML = templateHTML;
+        try {
+            const {
+                data: {
+                    movies: pelis
+                }
+            } = await getData(`${BASE_API}list_movies.json?limit=1&query_term=${data.get('name')}`)
+            const templateHTML = createTemplate(pelis[0]);
+            feature.innerHTML = templateHTML;
+        } catch (error) {
+            page.classList.remove("active");
+            alert(error.message)
+        }
+        form.reset();
     })
     function findByID(list, id) {
         return list.find(movie => movie.id === parseInt(id, 10))
@@ -74,9 +82,21 @@
             addEventClick(div);
         });
     }
-    const { data: { movies: actionList } } = await getData(`${BASE_API}list_movies.json?genre=action`);
+
+    async function cacheQuery(cat) {
+        const listName = `${cat}List`;
+        const cacheList = localStorage.getItem(listName);
+        if (cacheList) {
+            return JSON.parse(cacheList);
+        }
+        const { data: { movies: data } } = await getData(`${BASE_API}list_movies.json?genre=${cat}`);
+        localStorage.setItem(listName, JSON.stringify(data));
+        return data;
+    }
+
+    const actionList = await cacheQuery('action');
     loadList(actionList, series, "action");
-    const { data: { movies: dramaList } } = await getData(`${BASE_API}list_movies.json?genre=drama`);
+    const dramaList = await await cacheQuery('drama');
     loadList(dramaList, movies, "drama");
 })()
 
