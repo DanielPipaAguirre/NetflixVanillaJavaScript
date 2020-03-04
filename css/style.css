@@ -25,6 +25,11 @@ ul {
     list-style: none;
 }
 
+button {
+    border:none;
+    background: none;
+}
+
 .page {
     display: grid;
     width: 100%;
@@ -238,6 +243,7 @@ ul {
     height: 250px;
     object-fit: cover;
     margin: 0px 15px 20px;
+    animation: fadeIn 5s;
 }
 
 /* <-------- ALERT --------> */
@@ -265,6 +271,100 @@ ul {
 }
 .alert__description {
     margin-left: 30px;
+}
+
+/* <-------- MODAL --------> */
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.473);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.modal {
+    width: 660px;
+    height: 580px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 70px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    animation: modalIn .8s forwards; 
+}
+
+@keyframes modalIn {
+    0% {
+      transform: translateY(-3000px);
+    }
+    60% {
+      transform: translateY(25px);
+    }
+    75% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(5px);
+    }
+  }
+  @keyframes modalOut {
+    0% {
+      transform: translateY(5px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+    75% {
+      transform: translateY(25px);
+    }
+    100% {
+      transform: translateY(-3000px);
+    }
+  }
+
+.modal__title {
+    margin-bottom: 10px;
+}
+
+.modal__description {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal__description img {
+    width: 400px;
+    height: 300px;
+    margin-right: 20px;
+}
+
+.modal__description p {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.modal__close {
+    color: #fff;
+    background: #fe346e;
+    padding: 10px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 0px 0px#ca1e50;
+    font-size: 15px;
+    transition: .2s ease;
+}
+
+.modal__close:active {
+    transform: scale(.95);
 }
 
 /* <-------- ANIMATION LOADING --------> */
@@ -404,3 +504,17 @@ ul {
     0%, 39%, 100% { opacity: 0; }
     40% { opacity: 1; } 
   }
+
+  /* <-------- ANIMATION COVER --------> */
+/* .fadeIn {
+    animation: fadeIn 5s;
+}
+ */
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
