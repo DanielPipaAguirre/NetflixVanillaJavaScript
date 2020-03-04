@@ -291,7 +291,7 @@ button {
 }
 
 .modal {
-    width: 660px;
+    width: 720px;
     height: 580px;
     background: #fff;
     border-radius: 20px;
@@ -334,6 +334,7 @@ button {
 
 .modal__title {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .modal__description {
@@ -343,7 +344,7 @@ button {
 }
 
 .modal__description img {
-    width: 400px;
+    width: 200px;
     height: 300px;
     margin-right: 20px;
 }
